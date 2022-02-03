@@ -1,0 +1,671 @@
+@charset "utf-8";
+@use "variable" as v;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+
+$btnWidth: 23px;
+$btnHeight: 2px;
+
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+a { 
+    display        : block;
+    text-decoration: none; 
+    padding        : 0;
+    color          : v.$font_black;
+    width          : 100%;
+}
+
+button{
+    display: block;
+    text-decoration: none;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+    margin : 0;
+    z-index: 1000;
+  }
+
+ul li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+strong {
+    font-size                 : 1.1rem;
+}
+
+
+
+html{
+    font-size: 16px;
+
+    body{
+        margin                  : 0;
+        padding                 : 0;
+        color                   : v.$font_black;
+        font-family             : 'Noto Sans JP';
+        overflow-x: hidden;
+
+
+        .header{
+            color           : v.$font_black;
+            background-color: v.$bg_white;
+            font-family     : 'Noto Sans JP';
+            height          : 70px;
+            width           : 100%;
+            z-index         : 900;
+            position        : fixed; // ヘッダーは固定表示。
+    
+
+
+            .header_left{
+                width   : 35%;
+                height  : 100%;
+                position: absolute;
+                
+
+                p{  
+                    margin          : 15px 0 10.5px 0;
+                    background-color: v.$bg_white;
+                    line-height: 1.2;
+
+                    a{
+                        
+                        img{
+                            margin: 4px 15px 4px 20px;
+                            float : left;
+                            height: 33px;
+                            
+                        }
+
+                        span{
+                            margin     : 0;
+                            font-size  : 14px;
+                            font-weight: 900;
+                            white-space: nowrap;
+                        
+                        }
+                    }
+
+
+                }
+            }
+
+            .header_right{
+                
+                .navigation{
+                    float               : right;
+
+                    > ul{ //親メニューだけ横並び表示。
+                        display             : flex;
+
+                        .nav-menu {
+                            position        : relative;   
+                            background-color: v.$bg_white;
+                            font-weight     : bold;
+
+                            > a{    //親メニューの１〜７番、全てに適用。
+                                padding: 23px 15px;
+                                height: 70px;   //ホバー時の背景色に隙間ができるのを防ぐ。
+                                white-space: nowrap;
+                                transition-property :padding-left, padding-right;    // ウィンド幅変更時、アニメーション付きでサイズ変更。
+                                transition-duration:0.5s;
+                            }
+
+                            &:nth-last-child(1) > a{    //親メニュー７番目のみ適用。
+                                color           : v.$font_white;
+                                background-color: v.$bg_blue1;  
+                            }
+
+                            .dropdown-menu{
+                                position        : absolute;
+                                background-color: v.$bg_menu_lightblue1;
+                                top             : calc(100%);
+                                left            : 0;
+                                padding         : 0;
+                                line-height     : 55px;
+                                width           : auto;
+                                font-weight     : initial;                       
+                                // 以下、heightを使用したアニメーションの設定。PC&SP共通。
+                                height: 0;
+                                overflow: hidden;
+                                transition: all 0.3s ease;
+
+                                > li > a{
+                                    white-space: nowrap;
+                                    padding-left: 15px;
+                                    padding-right: 60px;
+                                }
+
+                            }
+
+                        }
+
+
+
+                        .nav-menu:nth-child(-n+6) > a:hover{ // //親メニューの１〜６番に適用。PC&SP共通。
+                            display         : block;
+                            background-color: v.$bg_menu_lightblue2;
+                            transition      : all 0.3s ease;   
+                            cursor          : default; // カーソルを矢印マークにする。    
+                        }
+
+                        .nav-menu:nth-child(3) > a:hover {   //「講師紹介」はポインターにする。
+                            cursor: pointer;
+                        }
+                     
+
+                        .nav-menu_5:hover > ul{ // 高さ(子メニュー数×55px)を出して表示する。
+                            height: 275px;
+                        }
+                        .nav-menu_7:hover > ul{
+                            height: 385px;
+                        }
+                        .nav-menu_2:hover > ul{
+                            height: 110px;
+                        }
+   
+                        .nav-menu > ul > li > a:hover{  // PC&SP共通。
+                            background-color    : v.$bg_white;
+                            color               : v.$font_blue1;
+                            transition          : all 0.3s ease; 
+                        }
+
+                    } 
+                 
+
+                }
+
+            }
+            .p-hamburger{
+                display: none;
+            }
+
+        }
+
+
+        main{
+            padding-top: 70px;   
+            height: 2500px;
+            background-color        : pink;
+
+            .tophead{
+                height: 650px;
+            
+                .tophead_bg3{
+                        height               : 100%;
+                        width                : 100%;
+                        background-image     : url(../images/01_top_page_images/bg-hero3.png);
+                        background-attachment: fixed;
+                        background-position  : center;
+                        background-repeat    : no-repeat;
+                        background-size      : cover;
+            
+                    .tophead_bg2 {
+                        position             : relative;
+                        top                  : -75px;
+                        height               : 130%;
+                        width                : 100%;
+                        background-image     : url(../images/01_top_page_images/bg-hero2.png);
+                        background-attachment: scroll;
+                        background-position  : center top;
+                        background-repeat    : no-repeat;
+        
+        
+                        .tophead_bg1{
+                            position             : absolute;
+                            height               : 100%;
+                            width                : 100%;
+                            background-image     : url(../images/01_top_page_images/bg-hero1.png);
+                            background-attachment: scroll;
+                            background-position  : center top;
+                            background-repeat    : no-repeat;
+                            display              : flex;
+                            justify-content      : center;
+                            
+                            .tophead_greeding{
+                                margin-top      : 156px;
+                                padding         : 28px 30px;
+                                width           : 414px;
+                                height          : 328px;
+                                background-color: v.$bg_white;
+                                color           : v.$font_black;
+                                border-radius   : 3%;
+                                text-align      : center;
+
+
+                                
+                                .tophead_logo img{
+                                    height: 59px;
+                                }
+                                    
+                                .tophead_message{
+                                    margin: 15px 0;
+                                    font-weight: bolder;
+                                    font-size  : 16px;
+                                    line-height: 27px;
+                                }
+                                    
+                                .tophead_btn{
+                                    margin          :30px 25px 10px 25px;
+                                    
+                                    a{
+                                        margin: auto;
+                                        padding-top     : 20px;
+                                        width           : 290px;
+                                        height          : 68px;
+                                        background-color: v.$bg_blue1;
+                                        border-radius   : 4px;
+                                        color           : v.$font_white;
+                                        font-size       : 18px;
+                                        font-weight     : bolder;
+
+                                        transition-property :height, width; // ウィンド幅変更時、アニメーション付きでサイズ変更。
+                                        transition-duration :0.5s;
+
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .recommendation{
+                position: relative;
+                height: 230px;
+    
+                .rec_blackbelt{
+                    position: absolute;
+                    height  : 100%;
+                    width   : 100%;
+                    background-color: v.$bg_black;            
+                    
+    
+                    .rec_wrap{
+                        height  : 430px;
+                        width   : 100%;
+                        bottom  : 0;
+                        position: absolute;
+                        margin: 0 auto;             
+    
+                        .rec_all{
+                            margin         :0 auto;
+                            text-align     : center;
+                            display        : flex;
+                            justify-content: center; 
+    
+    
+                            .rec_entry{
+                                max-width: 310px;
+                                margin: 0 10px 0 10px;
+                                
+                                .rec_title {
+    
+                                    .rec_icon{
+                                        padding-top     : 50px;
+                                        margin          : 0 auto;                        
+                                        width           : 230px;
+                                        height          : 230px;
+                                        border          : solid 2px v.$font_black;
+                                        border-radius   : 50%;
+                                        border-width    : 5px;
+                                        background-color: v.$bg_white;
+                                    } 
+    
+                                    .rec_caption{
+                                        margin     : 10px 0 0 0;
+                                        font-size  : 24px;
+                                        font-weight: bold; 
+                                        color      : v.$font_white; 
+                                    }                          
+                                }
+    
+                                .rec_body{                       
+                                    padding: 0 13% 0 13%;
+    
+                                    p{
+                                        margin-top : 15px;
+                                        font-size  : 16px;
+                                        font-weight: bold;
+                                        text-align : left;
+                                        line-height: 26px;
+                                        color      : v.$font_white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+        
+        .footer{
+            height: 50px;
+            background-color: lightgreen;
+        }
+    }
+}
+
+
+@media (max-width: 1280px) and (min-width: 1201px) { 
+
+    html{
+        body{
+                .header .header_left p span {
+                    display: none;
+                }
+
+        }
+    }
+}
+
+
+@media screen and (max-width: 1260px) { 
+    html body .header .header_right .navigation ul .nav-menu > a {
+        padding: 23px 10px;
+        transition: 0.3s;    // ウィンド幅変更時、アニメーション付きでサイズ変更。
+
+    }
+
+}
+
+
+@media screen and (max-width: 1200px) { 
+
+    html{
+        body{
+
+            .header{
+                width           : 100%;
+                height          : 50px;
+                
+                .header_left{
+
+                    p{
+                        margin: 0;
+
+                        a img{
+                            margin: 10px 0 10px 10px;
+                            height: 30px;
+                        }
+
+                        span{
+                            display: none;
+                        }
+                    }
+                }
+
+                .header_right{
+
+
+                    .p-hamburger {
+                        display         : block;
+                        position        : absolute;
+                        right           : 0;
+                        width           : 50px;
+                        height          : 50px;
+                        background-color: v.$bg_white;
+                        border          : none;
+                        
+                        &::before,
+                        &::after {
+                            content   : "";
+                            width     : $btnWidth;
+                            height    : $btnHeight;
+                            background: v.$bg_blue1;
+                            position  : absolute;
+                            left      : calc( 50% - ( #{$btnWidth} / 2 ) );
+                            transition: transform 0.2s;
+                            align-content: space-around;
+                        }
+                        &::before {
+                            top: 15px;
+                        }
+                        &::after {
+                            top: 33px;
+                        }
+                        > span {
+                            width          : $btnWidth;
+                            height         : $btnHeight;
+                            font-size      : 0;
+                            background: v.$bg_blue1;
+                            background-size: auto $btnHeight;
+                            position       : absolute;
+                            left           : calc( 50% - ( #{$btnWidth} / 2 ) );
+                            top            : calc( 50% - ( #{$btnHeight} / 2 ) );
+                            transition     : transform 0.2s;
+                        }
+                        &.is-open {
+                            background: v.$bg_blue1;
+
+                            &::before {
+                                transform: rotate( 45deg );
+                                top      : 23px;
+                                background: v.$bg_white;
+                            }
+                            &::after {
+                                transform: rotate( -45deg );
+                                top      : 23px;
+                                background: v.$bg_white;
+                            }
+                            > span {
+                                background: none;
+                            }
+
+                        }
+                    }
+
+                    .navigation{ 
+                        display: none;  //最初、ドロワーメニューは非表示。
+                        width: 100vw;
+                        height: 100%;
+                        position: relative;
+                        top: 50px;
+                        margin: 0 ;
+                        padding: 0;
+
+                        > ul{
+                            display: block; //1200pc以下では、親メニューの横並びから縦並びへ。
+
+                            .nav-menu{                    
+
+                                a{  //  ドロワーメニュー親＆子両方のAタグに適用。
+                                    padding: 12px 10px;
+                                    height: initial;
+                                }
+                                .nav-menu_pseudo{   //  親メニューのクラス。＋ボタンを擬似要素で作成。beforeが横線ー、afterが縦線｜とする。
+                                
+                                        &::before,
+                                        &::after {
+                                            content   : "";
+                                            display: block;
+                                            position: absolute;
+                                        }
+                                        &::before {
+                                            height: 2px;
+                                            width: 24px;
+                                            right: 13px;
+                                            top: 23px;
+                                            background-color: v.$bg_black;
+                                            z-index: 10;    //  親メニューホバー時に、横線ーが背景灰色に隠れるのを防ぐため設定。
+                                            
+                                        }
+                                        &::after {
+                                            height: 24px;
+                                            width: 2px;
+                                            right: 24px;
+                                            top: 12px;
+                                            background-color: v.$bg_black;
+                                            
+                                        }
+
+                                }
+
+                                .dropdown-menu{
+                                    width: 100vw; 
+                                    background-color: v.$bg_white;
+                                    line-height: 23px;
+
+                                    > li > a{
+                                        padding-left: 25px;
+                                    }
+
+                                }
+
+                            }
+
+
+                            .nav-menu:nth-last-child(1){
+                                display: none;
+                            }
+
+
+                            .nav-menu:hover > ul{   //　ホバーした親メニューの子メニューのみ表示する。
+                                visibility  : visible;
+                                position    : static;   //　Position absoluteを解除し、子メニューを表示させる。
+
+                            }
+    
+                            .nav-menu_5:hover > ul{ // 高さ(子メニュー数×48px)を出して表示する。
+                                height: 240px;
+                            }
+                            .nav-menu_7:hover > ul{
+                                height: 336px;
+                            }
+                            .nav-menu_2:hover > ul{
+                                height: 96px;
+                            }
+
+                            .nav-menu:nth-child(-n+6) > a:hover{
+                                background-color: v.$bg_menu_lightblue3;
+                            }
+                            
+                            .nav-menu > ul > li > a:hover{
+                                color           : initial;
+                                background-color: v.$bg_menu_lightblue3;
+                            }
+
+                            .nav-menu:hover > .nav-menu_pseudo::after{  //親メニューホバー時に＋をーにするため、縦線｜を灰色の背景色へと変更。
+                                top   : 0;
+                                right : 0;
+                                bottom: 0;
+                                width : 50px;
+                                height: 48px;
+                                background-color: v.$bg_lightgray;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+            main{
+                padding-top: 50px;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 767px) { 
+
+    html body main{
+
+        .tophead{
+            height: 320px;
+
+            .tophead_bg3{   
+                background-position: center -25px;
+
+                .tophead_bg2{
+                    top: -25px;
+                    height: 100%;
+                    background-size: cover;
+
+                    .tophead_bg1{
+                        background-size: cover;
+                        background-position: center -5px;
+
+                        .tophead_greeding{
+                            margin-top: 190px;
+                            width: 100%;
+                            height: 160px;
+                            padding: 10px 10px;
+                            border-radius: 0px;
+
+                            transition-property :height, margin;    // ウィンド幅変更時、アニメーション付きでサイズ変更。
+                            transition-duration :0.5s;
+
+                            .tophead_logo{
+                                margin: 0;
+
+                                img{
+                                    display: none;
+                                }
+                            }
+
+                            .tophead_message{
+                                margin: 0;
+                                padding-top: 6px;
+                                line-height: 22px;
+                                font-size: 13px;
+                            }
+                            .tophead_btn{
+                                margin-top          :15px;
+                                
+                                a{
+                                    padding-top     : 8px;
+                                    width           : 227px;
+                                    height          : 43px;
+                                    font-size       : 1.0rem;
+                                }
+                            }
+                        }
+                    } 
+                }    
+
+            } 
+        } 
+    
+  
+        .recommendation{
+            height: 1250px;
+
+            .rec_blackbelt {
+                .rec_wrap{
+                    position: initial;
+                    
+                    .rec_all{
+                        margin-top: 60px;
+                        display: block;
+
+                        .rec_entry{  
+                            max-width: initial;
+                            margin: 0;
+
+                            .rec_body{
+                                padding: 0 20px 20px 20px;
+                
+                                P{
+                                    text-align: center;  
+                                }
+                            } 
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 
+
